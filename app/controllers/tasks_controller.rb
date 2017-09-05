@@ -42,7 +42,8 @@ class TasksController < ApplicationController
 
 	def complete 
 		@task = Task.find(params[:id])
-		@task.update_attributes(:completed_at, Time.now)
+		@task.update_attributes(:completed_at => Time.now)
+		redirect_to root_path 
 	end
 
 	private

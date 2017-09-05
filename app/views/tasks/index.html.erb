@@ -1,75 +1,74 @@
 
 <% if user_signed_in? %>
+<!-- checks to see if a user is signed in, otherwise, it will render a landing page asking the user to login or sign up --> 
 
+<div class="col-md-10 col-md-offset-1">
 	<% @tasks.each do |task| %> 
+		<div class="index-wrapper">
+			
+			<% if task.completed? %> 
+<!-- START FOR COMPLETED ITEMS --> 
+			
+			<div class="row task">
+				<!-- FOR TICK ICON --> 
+				<div class="col-md-2">
+					<p><%=link_to complete_task_path(task), method: :patch do %></p> 
+						<i class="fa fa-check fa-lg" aria-hidden="true"></i>
+						<% end %>
+				</div>
 
-<!--Panel-->
-<!-- <div class="card">
-    <h3 class="card-header primary-color white-text">  
-    	<p><strong>Priority (1 - High, 2- Medium, 3 - Low): </strong><%= task.priority %>
-	    </p>
-	</h3>
+				<!-- FOR TRASH ICON --> 
+				<div class="col-md-2">
+					<p><%= link_to task, method: :delete, data: { confirm: "Are you sure?" } do %> </p>
+						<i class="fa fa-trash fa-lg"></i>
+						<% end %>
+				</div>
 
-    <div class="card-body">
-        <h4 class="card-title"><%= link_to task.title, task %></h4>
-        <p class="card-text">
-	        <strong>Task Description: </strong> 
-	        	<%= task.description%> 
-	        	<br> 
-	        <strong>Created Date and Time: </strong> 
-	        	<%= task.created_at.strftime("%d %b %Y %A, %I:%S %p") %> 
-	        	<br>
-	        <strong>Due Date: </strong><%= task.duedate %>
+				<!-- FOR TASK --> 
+				<div class="col-md-8">
+					<h2 style="opacity: 0.5;" class="task-title"><strike><%= link_to task.title, task %> </strike></h2>
+					<p style="opacity: 0.5;" class="task-sub-title task-desc"><%= task.description %></p>
+					<p style="opacity: 0.5:" class="time-created-at task-sub-title">Completed <%= time_ago_in_words(task.completed_at) %> ago</p>
+				</div>
+			</div>
+<!-- END FOR COMPLETED ITEMS --> 
+			<% else %> 
+<!-- START of NOT COMPLETED ITEMS --> 	
+				<div class="row task">
+					<div class="col-md-2">
+						<p><%= link_to complete_task_path(task), method: :patch do %></p>
+							<i class="fa fa-check fa-lg"></i>
+							<% end %>
+					</div>
 
-        </p>
-        <a class="btn btn-primary"><%= link_to task.title, task %></a>
-    </div>
-</div> -->
-<!--/.Panel-->
+					<div class="col-md-8">
+						<h2 class="task-title"><%= link_to task.title, task%></h2>
+						<p class="task-sub-title task-desc"><%= task.description %></p>
+						<p style="opacity: 0.5;" class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago</p>
+					</div>
 
+					<div class="col-md-2">
+						<p><%= link_to task, method: :delete, data: {confirm: "Are you sure?"} do %></p>
+							<i class="fa fa-trash fa-lg"></i>
+							<% end %>
+					</div>
 
+				</div>
 
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-
-	    <h2 class="panel-title">
-	    	<%= link_to task.title, task %>
-	    </h2>
-	  </div>
-
-	  <div class="panel-body">
-	     <p><strong>Task Description: </strong> <%= task.description%>
-	     </p>
-	  </div>
-
-	  <div class="panel-body">
-	     <p><strong>Created Date and Time: </strong> <%= task.created_at.strftime("%d %b %Y %A, %I:%S %p") %> 
-	     </p>
-	  </div>
-
-	  <div class="panel-body">
-	    <p><strong>Due Date: </strong><%= task.duedate %>
-		</p>
-	  </div>
-
-	  <div class="panel-body">
-	    <p><strong>Priority (1 - High, 2- Medium, 3 - Low): </strong><%= task.priority %>
-	    </p>
-	  </div>
-
-	</div>
+<!-- END of NOT COMPLETED ITEMS --> 		
+			<% end %> <!-- END THE IF-ELSE --> 
+		</div>
+	<% end %> <!-- END THE EACH-DO --> 
+</div>
+	
 
 
-	<% end %>
 
 <% else %>
 
 	<%= render 'welcome_page' %>
 
 <% end %> 
-
-
-
 
 
 

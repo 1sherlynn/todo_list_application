@@ -1,9 +1,9 @@
 <div class="col-md-10 col-md-offset-1">
 	<h2><%= @task.title %></h2>
-	<p><%= @task.description %></p>
-	<p><%= @task.created_at.strftime("%d %b %Y %A, %I:%S %p") %></p>
-	<p><%= @task.duedate %></p>
-	<p><%= @task.priority %></p>
+	<p><strong>Task Description: </strong><%= @task.description %></p>
+	<p><strong>Created Date: </strong><%= @task.created_at.strftime("%d %b %Y %A, %I:%S %p") %></p>
+	<p><strong>Due-date: </strong><%= @task.duedate %></p>
+	<p><strong>Priority (1 = High, 2 = Med, 3 = Low): </strong><%= @task.priority %></p>
 
 	<div class="col-md-4 col-md-offset-4">
 		<%= link_to "Back", root_path %>
