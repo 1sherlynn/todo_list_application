@@ -3,6 +3,8 @@
   <head>
     <title>TodoListApp</title>
     <%= csrf_meta_tags %>
+    <script src="https://use.fontawesome.com/f18f65954f.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -10,10 +12,10 @@
 
   <body>
 
-	  <nav class="navbar navbar-default">
+	  <nav class="navbar navbar-inverse bg-inverse">
 	  	<div class="container">
 	  		<div class="navbar-header">
-	  			<%= link_to "To-Do List", root_path, class: "navbar-brand" %>
+	  			<%= link_to "TASK LIST", root_path, class: "navbar-brand" %>
 	  		</div>
 	  		<ul class="nav navbar-nav navbar-right">
 	  			<% if current_user.present? %>

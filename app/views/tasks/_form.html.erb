@@ -1,5 +1,8 @@
 <%= simple_form_for @task do |f| %>
   <%= f.input :title, label:"Task" %>
   <%= f.input :description %>
+  <%= f.input :duedate %>
+  <%= f.input :priority, label:"Priority (1 - Hight, 2 - Medium, 3 - Low)"%>
+
   <%= f.button :submit %>
 <% end %>
