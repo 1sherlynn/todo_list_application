@@ -40,6 +40,11 @@ class TasksController < ApplicationController
 		redirect_to root_path
 	end
 
+	def complete 
+		@task = Task.find(params[:id])
+		@task.update_attributes(:completed_at, Time.now)
+	end
+
 	private
 	def task_params 
 		params.require(:task).permit(:title, :description, :duedate, :priority)
