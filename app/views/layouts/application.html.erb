@@ -6,6 +6,9 @@
     <script src="https://use.fontawesome.com/f18f65954f.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+  
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Dancing+Script|Dosis|Encode+Sans+Condensed|Lato|Libre+Barcode+39+Text|Lobster|Roboto|Zilla+Slab+Highlight" rel="stylesheet">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -32,8 +35,29 @@
 	  </nav>
 
 <div class="container">
-	  <p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
+
+		<% if flash[:notice] %>
+		  <div class="alert alert-success">
+		    <%= flash[:notice] %>
+		  </div>
+		<% end %>
+
+		<% if flash[:error] %>
+		  <div class="alert alert-danger">
+		    <%= flash[:error] %>
+		  </div>
+		<% end %>
+
+<!-- for a generic color display for alert, use the below --> 
+	<!-- <div>
+      <% flash.each do |key, value| %>
+        <% if key == [:notice] %>
+        <div class="alert alert-success" role="alert"> <%= value %> </div>
+        <% else %>
+        <div class="alert alert-danger" role="alert"> <%= value %> </div>
+      <% end %>
+      <% end %>
+    </div> -->
 
 
 	<%= yield %>
