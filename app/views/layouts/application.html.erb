@@ -30,9 +30,21 @@
 	  		</ul>
 	  		<% if user_signed_in? %>
 	  			<%= link_to "Create Task", new_task_path, class: "navbar-text navbar-link" %>
+	  			
+
+			
+			<% Category.all.each do |category| %>
+				
+				<%= link_to category.name, tasks_path(category: category.name), class: "navbar-text navbar-link" %> 
+
+			<% end %>
+	
+	  			
 	  		<% end %>
+	  		</nav>
 	  	</div>
-	  </nav>
+
+	  
 
 <div class="container">
 
@@ -60,14 +72,12 @@
     </div> -->
 
 
-<% Category.all.each do |category| %>
-	<%= link_to category.name, tasks_path(category: category.name) %> 
-<% end %>
-
 
 
 
 	<%= yield %>
+
+
 </div>
     
   </body>
