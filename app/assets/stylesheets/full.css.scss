@@ -5,7 +5,7 @@
  */
 
 body {
-    background: image-url("coffee2.jpeg"), no-repeat center center fixed;
+    background-image: asset-url("coffee2.jpeg"), no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
