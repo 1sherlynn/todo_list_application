@@ -1,8 +1,14 @@
 <%= simple_form_for @task do |f| %>
+
   <%= f.input :title, label:"Task" %>
   <%= f.input :description %>
   <%= f.input :duedate %>
-  <%= f.input :priority, label:"Priority (1 - Hight, 2 - Medium, 3 - Low)"%>
+<!--   <%= f.input :priority, label:"Priority (1 - High, 2 - Medium, 3 - Low)"%> -->
+<%= f.select :priority, [['High', 1], ['Medium', 2], ['Low', 3]], {prompt: "Rank Priority" }%> <br> <br>
+  
+
+  <br>
+  <br>
 
   <%= f.button :submit %>
 <% end %>

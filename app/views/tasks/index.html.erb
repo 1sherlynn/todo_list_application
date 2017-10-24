@@ -27,8 +27,23 @@
 				<!-- FOR TASK --> 
 				<div class="col-md-8">
 					<h2 style="opacity: 0.5;" class="task-title"><strike><%= link_to task.title, task %> </strike></h2>
-					<p style="opacity: 0.5;" class="task-sub-title task-desc"><%= task.description %></p>
+					<p style="opacity: 0.5;" class="task-sub-title task-desc">Description: <%= task.description %></p>
+					<p style="opacity: 0.5;" class="task-sub-title task-desc">Due-date: <%= task.duedate.strftime("%d %b %Y %A") %></p>
+
+					<p style="opacity: 0.5;" class="task-sub-title task-desc"> 
+							<% if task.priority == 1  %>
+								<p>Priority: High</p>
+							<% elsif  task.priority  == 2 %>
+								<p>Priority: Medium</p>
+							<% else %>
+								<p>Priority: Low</p>
+							<% end %> 
+						</p>
 					<p style="opacity: 0.5:" class="time-created-at task-sub-title">Completed <%= time_ago_in_words(task.completed_at) %> ago</p>
+
+
+
+
 				</div>
 			</div>
 <!-- END FOR COMPLETED ITEMS --> 
@@ -43,7 +58,18 @@
 
 					<div class="col-md-8">
 						<h2 class="task-title"><%= link_to task.title, task%></h2>
-						<p class="task-sub-title task-desc"><%= task.description %></p>
+						<p class="task-sub-title task-desc">Description: <%= task.description %></p>
+						<p class="task-sub-title task-desc">Due-date: <%= task.duedate.strftime("%d %b %Y %A") %></p>
+						<p class="task-sub-title task-desc"> 
+							<% if task.priority == 1  %>
+								<p>Priority: High</p>
+							<% elsif  task.priority  == 2 %>
+								<p>Priority: Medium</p>
+							<% else %>
+								<p>Priority: Low</p>
+							<% end %> 
+						</p>
+
 						<p style="opacity: 0.5;" class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago</p>
 					</div>
 
@@ -58,6 +84,8 @@
 <!-- END of NOT COMPLETED ITEMS --> 		
 			<% end %> <!-- END THE IF-ELSE --> 
 		</div>
+
+
 	<% end %> <!-- END THE EACH-DO --> 
 </div>
 	
